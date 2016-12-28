@@ -17,11 +17,13 @@ def about(request):
 def add_ad(request):
     form = AdForm()
     if request.method == 'POST':
+        print(request.POST)
         form = AdForm(request.POST)
-
+        print(form)
         if form.is_valid():
             ad = form.save(commit=False)
             ad.published_date = now()
+            print(ad)
             ad.save()
 
             return redirect("index")

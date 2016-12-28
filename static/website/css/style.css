@@ -132,3 +132,9 @@ a.jqTransformSelectOpen {display:block;position:absolute;top:1px;right:1px;width
  * Hidden - used to hide the original form elements
  * ------------- */
 .jqTransformHidden {display:none}
+
+/*
+*/
+#form-add {
+    margin: 1px auto;
+}

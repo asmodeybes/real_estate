@@ -4,6 +4,7 @@ from django.utils import timezone
 
 
 class Category(models.Model):
+    # Здесь достаточно CharField на 50-60 символов
     name = models.TextField(verbose_name="Категория")
 
     class Meta:
@@ -14,6 +15,7 @@ class Category(models.Model):
 
 
 class Destrict(models.Model):
+    # Здесь достаточно CharField на 50-60 символов
     name = models.TextField(verbose_name="Район")
 
     class Meta:
@@ -23,19 +25,18 @@ class Destrict(models.Model):
         return self.name
 
 
-
-
 class Ad(models.Model):
     category = models.ForeignKey(Category, verbose_name="Категория")
-
+    # Здесь должна быть связь ForeignKey
     area = models.OneToOneField(Destrict, verbose_name="Район")
     title = models.CharField(max_length=40, verbose_name="Заголовок")
     content = models.TextField(max_length=400, verbose_name="Текст объявления")
     price = models.IntegerField(verbose_name="Цена", default=0)
     published_date = models.DateTimeField(auto_now=True, verbose_name="Дата публикации")
-    author = models.ForeignKey(User, default=User.objects.get(pk=1))
-    phone=models.IntegerField(verbose_name="Телефон", default=0000000000)
-    email=models.EmailField(verbose_name="Электронная почта")
+    author = models.ForeignKey(User, verbose_name="Автор")
+    # Здесь нужно CharField на 15-20 символов
+    phone = models.IntegerField(verbose_name="Телефон")
+    email = models.EmailField(verbose_name="Электронная почта")
 
     def __str__(self):
         return self.title
@@ -44,8 +45,6 @@ class Ad(models.Model):
         verbose_name = "Объявление"
         verbose_name_plural = "Объявления"
 
-
 # class Photo(models.Model):
 #     ad = models.ForeignKey(Ad)
 #     image = models.ImageField('Фото ', upload_to='upload/images')
-

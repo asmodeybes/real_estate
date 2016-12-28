@@ -7,36 +7,36 @@
         <form action="{% url 'add_ad' %}" method="post">
             {% csrf_token %}
 
-            {#        <br>{{ form.as_p }}#}
-            <br>
-            <p><label for="id_category">Категория:</label> <select id="id_category" name="category" required="">
-                <option value="" selected="selected">---------</option>
-                <option value="1">Дом</option>
-                <option value="2">Квартира</option>
-                <option value="3">Гараж</option>
-                <option value="4">Участок</option>
-            </select></p>
-            <p><label for="id_area">Район:</label> <select id="id_area" name="area" required="">
-                <option value="" selected="selected">---------</option>
-                <option value="1">Центральный</option>
-            </select></p>
-            <p><label for="id_title">Заголовок:</label> <input id="id_title" maxlength="40" name="title" required=""
-                                                               type="text"></p>
-            <p><label for="id_content">Текст объявления:</label> <textarea cols="40" id="id_content" maxlength="400"
-                                                                           name="content" rows="10"
-                                                                           required=""></textarea>
-            </p>
-            <p><label for="id_price">Цена:</label> <input id="id_price" name="price" value="0" required=""
-                                                          type="number">
-            </p>
-            <p><label for="id_author">Author:</label> <select id="id_author" name="author" required="">
-                <option value="1" selected="selected">admin</option>
-            </select></p>
-            <p><label for="id_phone">Телефон:</label> <input id="id_phone" name="phone" value="0" required=""
-                                                             type="number">
-            </p>
-            <p><label for="id_email">Электронная почта:</label> <input id="id_email" maxlength="254" name="email"
-                                                                       required="" type="email"></p>
+                    <br>{{ form }}
+{#            <br>#}
+{#            <p><label for="id_category">Категория:</label> <select id="id_category" name="category" required="">#}
+{#                <option value="" selected="selected">---------</option>#}
+{#                <option value="1">Дом</option>#}
+{#                <option value="2">Квартира</option>#}
+{#                <option value="3">Гараж</option>#}
+{#                <option value="4">Участок</option>#}
+{#            </select></p>#}
+{#            <p><label for="id_area">Район:</label> <select id="id_area" name="area" required="">#}
+{#                <option value="" selected="selected">---------</option>#}
+{#                <option value="1">Центральный</option>#}
+{#            </select></p>#}
+{#            <p><label for="id_title">Заголовок:</label> <input id="id_title" maxlength="40" name="title" required=""#}
+{#                                                               type="text"></p>#}
+{#            <p><label for="id_content">Текст объявления:</label> <textarea cols="40" id="id_content" maxlength="400"#}
+{#                                                                           name="content" rows="10"#}
+{#                                                                           required=""></textarea>#}
+{#            </p>#}
+{#            <p><label for="id_price">Цена:</label> <input id="id_price" name="price" value="0" required=""#}
+{#                                                          type="number">#}
+{#            </p>#}
+{#            <p><label for="id_author">Author:</label> <select id="id_author" name="author" required="">#}
+{#                <option value="1" selected="selected">admin</option>#}
+{#            </select></p>#}
+{#            <p><label for="id_phone">Телефон:</label> <input id="id_phone" name="phone" value="0" required=""#}
+{#                                                             type="number">#}
+{#            </p>#}
+{#            <p><label for="id_email">Электронная почта:</label> <input id="id_email" maxlength="254" name="email"#}
+{#                                                                       required="" type="email"></p>#}
 
             <input type="submit">
         </form>
