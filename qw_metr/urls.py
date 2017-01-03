@@ -19,9 +19,11 @@ from django.contrib import admin
 from django.conf.urls import url, include
 from django.contrib import admin
 from  website import views
-
+from django.contrib.auth.views import login, logout
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
     url(r'^', include("website.urls")),
+    url(r'^login/$', login, name="HM_login"),
+    url(r'^logout/$', logout, {'next_page': "index"}, name="HM_logout"),
 ]

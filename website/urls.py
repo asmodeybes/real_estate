@@ -18,7 +18,7 @@ from django.conf.urls import url
 from django.views.generic import TemplateView
 from django.contrib import admin
 from  website import views
-
+from django.contrib.auth.views import login, logout
 
 
 urlpatterns = [
@@ -26,4 +26,7 @@ urlpatterns = [
     url(r'^index/$', views.index, name="website"),
     url(r'^add_ad/$', views.add_ad, name="add_ad"),
     url(r'^about/$', views.about, name="about"),
+    url(r'^login/$', login, name="HM_login"),
+    url(r'^logout/$', logout, {'next_page':"index"}, name="HM_logout"),
+    url(r'^register/$', views.RegisterFormView.as_view(), name="register"),
 ]

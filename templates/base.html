@@ -25,6 +25,17 @@
 		<![endif]-->
 
 	</head>
+    <div class="top-bar">
+    <section class="top-bar section ">
+        <ul class="right">
+            {% if  user.is_authenticated %}
+            <li><a href='{% url 'HM_logout' %}'>Выйти из  {{ user }}</a><li/>
+            {% else %}
+            <li><a href='{% url 'HM_login' %}'>Войти</a><li/>
+            {% endif %}
+        </ul>
+    </section>
+</div>
 	<body id="page6">
 		<div class="body1">
 			<div class="main">
@@ -61,7 +72,7 @@
 <!-- footer -->
 
 <!-- footer -->
-			</div>
+			</section>
 		</div>
 		<script type="text/javascript"> Cufon.now(); </script>
 	</body>

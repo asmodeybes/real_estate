@@ -7,7 +7,7 @@
         <form action="{% url 'add_ad' %}" method="post">
             {% csrf_token %}
 
-                    <br>{{ form }}
+                    <br>{{ form.as_p}}
 {#            <br>#}
 {#            <p><label for="id_category">Категория:</label> <select id="id_category" name="category" required="">#}
 {#                <option value="" selected="selected">---------</option>#}

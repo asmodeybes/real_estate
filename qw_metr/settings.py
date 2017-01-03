@@ -123,3 +123,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
+
+
+LOGIN_REDIRECT_URL='add_ad'
+LOGIN_URL='HM_login'
+LOGOUT_URL='HM_logout'
