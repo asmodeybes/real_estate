@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+{% load static %}
+<form id="form_1" method="post" action="{% url 'search' %}">
+    {% csrf_token %}
+
+    {% block css %}
+    <style>
+input.text {
+    width:  25px;
+
+}
+</style>
+    {% endblock %}
+
+    <div class="pad1">
+        <h3>Поиск недвижимости</h3>
+        <div class="row_select">
+            Тип неджвижимости:<br>
+            <select name="category">
+                <option>Дом</option>
+                <option>Квартира</option>
+                <option>Гараж</option>
+                <option>Участок</option>
+            </select>
+        </div>
+        <div class="row_select">
+            Район:<br>
+            <select name="descrict">
+                <option>Новокодакский </option>
+                <option>Соборный</option>
+                <option>Центральный</option>
+                <option>Чечеловский</option>
+                <option>Шевченковский</option>
+            </select>
+        </div>
+        <div class="row_select">
+             Тип операции:<br>
+            <select name="operation">
+                <option>Продажа</option>
+                <option>Аренда</option>
+                <option>Обмен</option>
+            </select>
+        </div>
+
+            <div class="cols">
+                Цена от, $ :<br>
+
+                <input type="text" name="price_start"  min="0"  max="1000000"   size="8"  pattern="\d+" value="0" onkeyup="this.value = this.value.replace (/\D/gi, '').replace (/^0+/, '')">
+            </div>
+            <div class="cols pad_left1">
+                до:<br>
+               <input name="price_finish"  value="0" type="text" min="0" max="1000000"  size="8"  onkeyup="this.value = this.value.replace (/\D/gi, '').replace (/^0+/, '')">
+            </div>
+
+            <div class="cols">
+                Комната(ы):<br>
+                <input name="rooms"   value="0" type="text" min="1" max="10" size="5" onkeyup="this.value = this.value.replace (/\D/gi, '').replace (/^0+/, '')">
+            </div>
+            <div class="cols pad_left1">
+
+            <div >
+                <a href="javascript:document.forms[0].submit()" class="button">Найти</a>
+            </div>
+        </div>
+
+    </div>
+</form>

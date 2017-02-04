@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'website'
+    'website',
+    'easy_thumbnails',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'qw_metr.urls'
@@ -55,7 +58,7 @@ ROOT_URLCONF = 'qw_metr.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'website/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -63,6 +66,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
             ],
         },
     },
@@ -118,6 +122,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 
+
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
@@ -125,6 +130,16 @@ STATICFILES_DIRS = [
 ]
 
 
+
+LOGOUT_URL='logout'
+
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'website/../uploads')
+
+REGISTRATION_OPEN = True        # Если равно True, то пользователи могут регистрироваться
+ACCOUNT_ACTIVATION_DAYS = 7     # время в течении которого можно активировать аккаунт;
+                                # в качестве примера выбрано 7 дней или одна неделя, но Вы можете указать другое значение.
+REGISTRATION_AUTO_LOGIN = True  # Если равно  True, то пользователь будет автоматически входить в систему.
 LOGIN_REDIRECT_URL='add_ad'
-LOGIN_URL='HM_login'
-LOGOUT_URL='HM_logout'
+LOGIN_URL='/accounts/login/'

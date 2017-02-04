@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="{% static "website/css/reset.css" %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static "website/css/layout.css" %}" type="text/css" media="all">
+    <link rel="stylesheet" href="{% static "website/css/style.css" %}" type="text/css" media="all">
+    <script type="text/javascript" src="{% static "website/js/jquery-1.6.js" %}"></script>
+    {#		<script type="text/javascript" src="{% static "website/js/cufon-yui.js" %}"></script>#}
+    <script type="text/javascript" src="{% static "website/js/cufon-replace.js" %}"></script>
+    <script type="text/javascript" src="{% static "website/js/Didact_Gothic_400.font.js" %}"></script>
+    <script type="text/javascript" src="{% static "website/js/jquery.nivo.slider.pack.js" %}"></script>
+    <script type="text/javascript" src="{% static "website/js/atooltip.jquery.js" %}"></script>
+    <script type="text/javascript" src="{% static "website/js/jquery.jqtransform.js" %}"></script>
+    <script type="text/javascript" src="{% static "website/js/script.js" %}"></script>
+    <script type="text/javascript" src="{% static "website/js/jquery.easing.1.3.js" %}"></script>
+    <!--[if lt IE 9]>
+			<script type="text/javascript" src="js/html5.js"></script>
+			<style type="text/css">
+				.bg{ behavior: url(js/PIE.htc); }
+			</style>
+		<![endif]-->
+    {% block css %}{% endblock %}
+    {% block js %}{% endblock %}
+</head>
+<div class="top-bar">
+    <section class="top-bar section ">
+        <ul class="right">
+            {% if  user.is_authenticated %}
+                <p><a href='{% url 'auth_logout' %}?next=/index/' class="button">Выйти </a><p/>
+                <li><a href='{% url 'account' %}' class="button">Мой профиль </a>
+                <li/>
+            {% else %}
+                <li><a href='{% url 'auth_login' %}' class="button">Войти</a>
+                <li/>
+            {% endif %}
+        </ul>
+    </section>
+</div>
+<body id="page6">
+<div class="body1">
+    <div class="main">
+        <!-- header -->
+        <header>
+            <h1><a href="{% url "index" %}" id="logo"></a></h1>
+            <div class="wrapper">
+                <ul id="icons">
+                    <li><a href="https://vk.com/alexey.popov_86" class="normaltip" title="Facebook"><img
+                            src="{% static "website/images/icon1.jpg" %}" alt=""></a></li>
+                    <li><a href="https://vk.com/alexey.popov_86" class="normaltip" title="Twitter"><img
+                            src="{% static "website/images/icon2.jpg" %}" alt=""></a></li>
+                    <li><a href="https://vk.com/alexey.popov_86" class="normaltip" title="Vk"><img
+                            src="{% static "website/images/icon3.jpg" %}" alt=""></a></li>
+                </ul>
+            </div>
+            <nav>
+                <ul id="menu">
+                    <li><a href="{% url "index" %}">Главная</a></li>
+
+
+                    <li><a href="{% url "about" %}">О нас</a></li>
+
+                    <li id="menu_active" class="end"><a href="{% url "add_ad" %}">+ПОДАТЬ ОБЪЯВЛЕНИЕ</a></li>
+                </ul>
+            </nav>
+
+        </header>
+        <!-- / header -->
+    </div>
+</div>
+<!-- content -->
+{% block content %}{% endblock %}
+<!-- / content -->
+<div class="body4">
+    <div class="main">
+        <!-- footer -->
+
+        <!-- footer -->
+        </section>
+    </div>
+</div>
+{#		<script type="text/javascript"> Cufon.now(); </script>#}
+</body>
+</html>

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Real Estate{% endblock %}
+{% block css %}
+    <style>
+        #form-add {
+            margin: 0 auto;
+            width: 500px;
+        }
+
+        label {
+            color: black;
+            display: inline-block;
+            width: 150px;
+        }
+    </style>
+{% endblock %}
+<!-- content -->
+{% block content %}
+    <!-- content -->
+    <div id="form-add">
+        <form action="{% url 'apartment_add' %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <br>{{ form.as_p }}
+
+
+            <input type="submit" value="Сохранить" class="button">
+        </form>
+    </div>
+    <br>
+    <br>
+    <script>
+        {% include "include/choise_category.js" %}
+    </script>
+    <!-- / content -->
+{% endblock %}

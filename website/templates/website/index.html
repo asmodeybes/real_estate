@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+<meta http-equiv="Refresh" content="1" />
+{% block title %}Real Estate{% endblock %}
+{% block content %}
+     {% block js %}{% endblock %}
+{% block css %}
+    <style> .pagination {
+   text-align: center; </style>
+
+}
+    {% endblock css %}
+    <!-- content -->
+
+<body>
+    <div class="body2">
+        <div class="main">
+            <section id="content">
+                <div class="wrapper">
+                    <article class="col1">
+
+                        <div id="slider">
+
+                            <img src="{% static "website/images/img1.jpg" %}" alt=""
+
+                            <img src="{% static "website/images/img2.jpg" %}" alt=""
+
+                            <img src="{% static "website/images/img3.jpg" %}" alt=""
+
+                            <img src="{% static "website/images/img4.jpg" %}" alt=""
+
+                            <img src="{% static "website/images/img5.jpg" %}" alt=""
+
+
+                        </div>
+                    </article>
+                    <article class="col2">
+                        {% include "include/form_search.html" %}
+                    </article>
+
+
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="body3">
+        <div class="main">
+            <section id="content2">
+                <div class="wrapper">
+                    <article class="col1">
+                        <div class="pad2">
+                            <h2>Свежие предложения</h2>
+                            {% for ad  in p_list %}
+                                <div class="wrapper pad_bot3">
+                                    <figure class="left marg_right1">
+                                        <img src="{% thumbnail ad.image 150x150 crop %}" alt=""></figure>
+                                    <p class="pad_bot1"><strong class="color2">
+                                        {{ ad.title|truncatechars:30 }}
+                                        <br>
+                                        Цена: <span class="color1">$ {{ ad.price }}</span></strong></p>
+                                    <p class="pad_bot2"> Район: {{ ad.district }}</p>
+                                    <p class="pad_bot2">{{ ad.content|truncatechars:50 }}</p>
+                                    <a href="{% url 'ad_details' ad.pk %}" class="button">Детально</a>
+                                </div>
+                            {% endfor %}
+
+
+                        </div>
+
+                    </article>
+
+                </div>
+            </section>
+        </div>
+    </div>
+    <div class="pagination">
+        <span class="step-links">
+        {% if p_list.has_previous %}
+            <a href="?page={{ p_list.previous_page_number }}">&laquo; назад</a>
+        {% endif %}
+            <span class="current"> страница {{ p_list.number }} из {{ p_list.paginator.num_pages }} </span>
+            {% if p_list.has_next %}
+                <a href="?page={{ p_list.next_page_number }}">вперед &raquo;</a>
+                <br>
+            {% endif %}
+        </span>
+            </div>
+            <br>
+        {% endblock %}
+    </div>
+
+<!-- / content -->
+<!-- / footer -->
+
+
+		<script type="{% static "website/js/text/javascript"%}"> Cufon.now(); </script>
+		<script type="{% static "website/js/text/javascript"%}">
+		   $(window).load(function() {
+		   $('#slider').nivoSlider({
+				effect:'sliceUpDown', //Specify sets like: 'fold,fade,sliceDown, sliceDownLeft, sliceUp, sliceUpLeft, sliceUpDown, sliceUpDownLeft'
+				slices:17,
+				animSpeed:500,
+				pauseTime:6000,
+				startSlide:0, //Set starting Slide (0 index)
+				directionNav:false, //Next & Prev
+				directionNavHide:false, //Only show on hover
+				controlNav:true, //1,2,3...
+				controlNavThumbs:false, //Use thumbnails for Control Nav
+				controlNavThumbsFromRel:false, //Use image rel for thumbs
+				controlNavThumbsSearch: '.jpg', //Replace this with...
+				controlNavThumbsReplace: '_thumb.jpg', //...this in thumb Image src
+				keyboardNav:true, //Use left & right arrows
+				pauseOnHover:true, //Stop animation while hovering
+				manualAdvance:false, //Force manual transitions
+				captionOpacity:1, //Universal caption opacity
+				beforeChange: function(){$('.nivo-caption').animate({bottom:'-110'},400,'easeInBack')},
+				afterChange: function(){Cufon.refresh();$('.nivo-caption').animate({bottom:'-20'},400,'easeOutBack')},
+				slideshowEnd: function(){} //Triggers after all slides have been shown
+			});
+		   Cufon.refresh();
+		});
+		</script>
+	</body>
+</html>
+
+
+
+
+

@@ -3,5 +3,6 @@ $(document).ready(function() {
 	// basic usage  
 	$('.normaltip').aToolTip();  
 	
-	$('#form_1').jqTransform({imgPath:'jqtransformplugin/img/'});	
+	$('#form_1').jqTransform({imgPath:'jqtransformplugin/img/'});
  });
+

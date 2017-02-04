@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+{% load thumbnail %}
+<meta http-equiv="Refresh" content="1" />
+{% block title %}Real Estate{% endblock %}
+
+
+<!-- content -->
+    {% block content %}
+    <!-- content -->
+
+             {% block css %}
+     <style>
+        table  {
+font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+font-size: 14px;
+border-collapse: collapse;
+text-align: center;
+            margin: auto
+}
+th, td:first-child {
+background: #bababa;
+color: black;
+padding: 10px 10px;
+    vertical-align: middle;
+
+}
+th, td {
+border-style: solid;
+border-width:  0px 0px ;
+border-color: black;
+    color: black;
+    vertical-align: middle;
+}
+td {
+background: #bababa;
+    color: black;
+}
+th:first-child, td:first-child {
+text-align: left;
+    color: black;
+}
+       p {
+    text-align: justify; /* Выравнивание по ширине */
+   }
+.fig {
+    text-align: center; /* Выравнивание по центру */
+   }
+    </style>
+
+{% endblock %}
+ {% for ad in ads %}
+<table class="table"  align="center" valign="middle">
+ <tr >
+     <td >Заголовок:</td>
+  <td>{{ ad.title }}</td>
+ </tr>
+<tr>
+  <td>Операция:</td>
+  <td>{{ ad.operation }}</td>
+</tr>
+    <tr>
+  <td>Район:</td>
+  <td>{{ ad.district }}</td>
+</tr>
+</table>
+{% endfor %}
+  <br>
+ {% for ad in ads %}
+<table class="table" align="right" >
+  <tr>
+  <td>Цена:</td>
+  <td>{{ ad.price }}</td>
+
+</tr>
+
+ </table>
+        {% endfor %}
+{% for ad in ads %}
+<table  align="center" width="550" >
+
+{% if ad.rooms > 0 %}
+<tr >
+  <td width="200" >Общая площадь:</td>
+
+  <td align="left"> {{ ad.total_area }}</td>
+
+  <td  align="left">Количество комнат:</td>
+  <td > {{ ad.rooms  }}</td>
+
+</tr>
+
+   <tr>
+
+   <td>Жилая площадь:</td>
+  <td align="left">{{ ad.living_area }}</td>
+
+  <td width="200" align="left">Этажность дома:</td>
+  <td>{{ ad.floors}}</td>
+
+    <tr>
+  <td>Площадь кухни:</td>
+  <td align="left">{{ad.kitchen_area }}</td>
+{% if ad.floor > 0 %}
+<td width="200" align="left">Этаж:</td>
+  <td>{{ad.floor }}</td>
+{% endif %}
+</tr>
+    {% else %}
+     <tr>
+  <td>Площадь, м.кв.</td>
+  <td>{{ ad.area}}</td>
+
+</tr>
+{% endif %}
+<br>
+
+<br>
+{% for ad in ads %}
+<table class="table" align="center" width="550">
+    <br>
+    <tr>
+        <td ><p>{{ ad.content }}</p></td>
+
+
+</tr>
+
+</table>
+<br>
+        <p class="fig"><img src="{% thumbnail ad.image 550x550 crop %}" alt=""></fig>
+
+    {% endfor %}
+
+
+
+{% for ad in ads %}
+<table class="table" align="right">
+      <tr>
+  <td>Контактное лицо:</td>
+  <td>{{ ad.author}}</td>
+
+</tr>
+
+  <tr>
+  <td>Телефон:</td>
+  <td>{{ ad.phone}}</td>
+
+</tr>
+     <tr>
+  <td>Электронная почта:</td>
+  <td>{{ ad.email}}</td>
+
+</tr>
+</table>
+</table>
+
+{% endfor %}
+{% endfor %}
+    <!-- / content -->
+{% endblock %}

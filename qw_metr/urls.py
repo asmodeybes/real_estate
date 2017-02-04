@@ -20,10 +20,15 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from  website import views
 from django.contrib.auth.views import login, logout
+from django.conf.urls.static import static
+from django.conf import settings
+
+
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.index),
     url(r'^', include("website.urls")),
-    url(r'^login/$', login, name="HM_login"),
-    url(r'^logout/$', logout, {'next_page': "index"}, name="HM_logout"),
-]
+    url(r'^login/$', login, name="login"),
+    url(r'^logout/$', logout, {'next_page': "http://127.0.0.1:8000/index"}, name="logout"),
+    url(r'^accounts/', include('registration.backends.simple.urls'))
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,21 @@
+I В qw_meter\urls.py добавляешь:
+
+1. Импорт модулей
+from django.conf.urls.static import static
+from django.conf import settings
+
+2. Обновляешь urlpattenrs:
+
+urlpatterns = [
+    url(r'^admin/', admin.site.urls),
+    url(r'^$', views.index),
+    url(r'^', include("website.urls")),
+    url(r'^login/$', login, name="HM_login"),
+    url(r'^logout/$', logout, {'next_page': "http://127.0.0.1:8000/index"}, name="HM_logout"),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+II. В vebsite\views.py правишь:
+
+105 строка
+form = AdForm(request.POST, request.FILES)
+
+и все будет работать

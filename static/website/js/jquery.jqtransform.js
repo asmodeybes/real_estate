@@ -328,7 +328,7 @@
 			selfForm.addClass('jqtransformdone');
 			
 			$('input:submit, input:reset, input[type="button"]', this).jqTransInputButton();			
-			$('input:text, input:password', this).jqTransInputText();			
+			$('input:text, input:password', this).jqTransInputText();
 			$('input:checkbox', this).jqTransCheckBox();
 			$('input:radio', this).jqTransRadio();
 			$('textarea', this).jqTransTextarea();
